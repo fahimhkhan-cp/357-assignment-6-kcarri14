@@ -32,7 +32,7 @@ int load_data(char *filename, Info **info){
 
 void display_counties(Info *information, int count){
     for(int i = 0; i < count; i++){
-        printf("County name: %s\nCounty State: %s\nPopluation: %d\n", information[i].county, information[i].state, information[i].Population_2014_Population);
+        printf("County name: %s\nCounty State: %s\nPopluation: %llu\n", information[i].county, information[i].state, information[i].Population_2014_Population);
     }
 }
 
@@ -117,18 +117,18 @@ int execute_operation(char *line, Info *information, int count){
         population_total(information, count);
     }else if(strcmp(function_wanted, "filter-state")){
         char *state_wanted = strtok(NULL, "\n");
-        filter_state(information, count, state_wanted);
+        filter_state(information, &count, state_wanted);
     }else if(strcmp(function_wanted, "filter")){
         char *field_wanted = strtok(NULL, ":");
         char *ge_or_le = strtok(NULL, ":");
-        float number = strok(NULL,"\n");
-        filter_field(information, count, field_wanted, ge_or_le, number);
+        float number = atof(strtok(NULL,"\n"));
+        filter_field(information, &count, field_wanted, ge_or_le, number);
     }else if(strcmp(function_wanted, "percent")){
         char *field_wanted = strtok(NULL, "\n");
-        percent(information, count, field_wanted);
+        percent(information, &count, field_wanted);
     }else if(strcmp(function_wanted, "population")){
         char *field_wanted = strtok(NULL, "\n");
-        population_field(information, count, field_wanted);
+        population_field(information, &count, field_wanted);
     }else if(strcmp(function_wanted, "display")){
         display_counties(information, count);
     }else{

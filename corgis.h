@@ -70,7 +70,7 @@ int parsing(char *line, Info *information){
     }
     strcpy(information->county, token);
     //copy state into structure
-    char *token = strtok(buffer, ",");
+    token = strtok(NULL, ",");
     if(!token){
         return -1;
     }
