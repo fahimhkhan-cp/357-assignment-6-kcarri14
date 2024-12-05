@@ -20,7 +20,7 @@ int load_data(char *filename, Info **info){
         }
         Info information;
         if(parsing(line, &information) == -1){
-            printf("Error: line entry is malformed %d\n", line_num);
+            //printf("Error: line entry is malformed %d\n", line_num);
             continue;
         }
         (*info)[count++] = information;
@@ -51,9 +51,9 @@ void filter_field(Info *information, int *count, char *field, char *comparison, 
     for(int i = 0; i < *count; i++){
         float field_value;
         if (strcmp(field, "Education.High School or Higher") == 0) {
-            field_value = information[i].Education_Bachelors_Degree_or_Higher;
-        } else if (strcmp(field, "Education.Bachelors or Higher") == 0) {
             field_value = information[i].Education_High_School_or_Higher;
+        } else if (strcmp(field, "Education.Bachelor's Degree or Higher") == 0) {
+            field_value = information[i].Education_Bachelors_Degree_or_Higher;
         } else if (strcmp(field, "Income.Persons Below Poverty Level") == 0) {
             field_value = information[i].Income_Persons_Below_Poverty_Level;
         } else if (strcmp(field, "Ethnicities.American Indian and Alaska Native Alone") == 0) {
