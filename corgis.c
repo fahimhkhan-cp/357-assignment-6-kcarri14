@@ -113,7 +113,10 @@ void percent(Info *information, int *count, char *field){
 
 int execute_operation(char *line, Info *information, int count){
     char *function_wanted = strtok(line, ":\n");
-    printf("%s\n", function_wanted);
+    if (!function_wanted) {
+    fprintf(stderr, "Malformed line: no function specified\n");
+    return -1;
+    }
     if(strcmp(function_wanted,"population-total")== 0){
         population_total(information, count);
     }else if(strcmp(function_wanted, "filter-state") == 0){
