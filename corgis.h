@@ -70,7 +70,7 @@ void trim_whitespace(char *str) {
 }
 
 int parsing(char *line, Info *information){
-    char buffer[1024];
+    char buffer[4000];
     strcpy(buffer, line);
     //copy county into structure
     char *token = strtok(buffer, ",");
@@ -180,7 +180,7 @@ int parsing(char *line, Info *information){
      token = strtok(NULL, ",");
     if (!token) return -1;
     trim_whitespace(token);
-    information->Housing_Homeownership_Rate = atoll(token);
+    information->Housing_Households = atoll(token);
 
      token = strtok(NULL, ",");
     if (!token) return -1;
