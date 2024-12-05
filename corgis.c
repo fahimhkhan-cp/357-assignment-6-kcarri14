@@ -114,23 +114,23 @@ void percent(Info *information, int *count, char *field){
 int execute_operation(char *line, Info *information, int count){
     char *function_wanted = strtok(line, ":\n");
     printf("%s\n", function_wanted);
-    if(strcmp(function_wanted,"population-total")){
+    if(strcmp(function_wanted,"population-total")== 0){
         population_total(information, count);
-    }else if(strcmp(function_wanted, "filter-state")){
+    }else if(strcmp(function_wanted, "filter-state") == 0){
         char *state_wanted = strtok(NULL, "\n");
         filter_state(information, &count, state_wanted);
-    }else if(strcmp(function_wanted, "filter")){
+    }else if(strcmp(function_wanted, "filter") == 0){
         char *field_wanted = strtok(NULL, ":");
         char *ge_or_le = strtok(NULL, ":");
         float number = atof(strtok(NULL,"\n"));
         filter_field(information, &count, field_wanted, ge_or_le, number);
-    }else if(strcmp(function_wanted, "percent")){
+    }else if(strcmp(function_wanted, "percent") == 0){
         char *field_wanted = strtok(NULL, "\n");
         percent(information, &count, field_wanted);
-    }else if(strcmp(function_wanted, "population")){
+    }else if(strcmp(function_wanted, "population") == 0){
         char *field_wanted = strtok(NULL, "\n");
         population_field(information, &count, field_wanted);
-    }else if(strcmp(function_wanted, "display")){
+    }else if(strcmp(function_wanted, "display") == 0){
         display_counties(information, count);
     }else{
         fprintf(stderr, "malformed line");

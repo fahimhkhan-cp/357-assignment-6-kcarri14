@@ -86,6 +86,7 @@ int parsing(char *line, Info *information){
     }
     trim_whitespace(token);
     strcpy(information->state, token);
+    printf("%s\n", information[1].state);
 
     token = strtok(NULL, ",");
     if (!token) return -1;
