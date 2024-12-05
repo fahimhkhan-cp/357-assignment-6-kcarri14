@@ -151,7 +151,7 @@ int process_operations(char *filename, Info *information, int count){
             continue;
         }
         if(execute_operation(line, information, count) == -1){
-            fprintf(stderr, "Error: malformed operation: %s\n", line);
+            printf("Error: malformed operation: %s\n", line);
             continue;
         }
     }
@@ -161,20 +161,20 @@ int process_operations(char *filename, Info *information, int count){
 
 int main(int argc, char* argv[]){
     if(argc != 3){
-        perror("Error: not enough arguments");
+        perror("Error: not enough arguments\n");
         return 1;
     }
     Info *information = NULL;
     int count = load_data(argv[1], &information);
 
     if(count == -1){
-        perror("Error: fail to load data");
+        perror("Error: fail to load data\n");
         return 1;
     }
     printf("Loaded %d entries.\n", count);
 
     if(process_operations(argv[2], information, count)){
-        perror("Error: failed to process operations");
+        perror("Error: failed to process operations\n");
         free(information);
         return 1;
     }
