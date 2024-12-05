@@ -20,7 +20,7 @@ int load_data(char *filename, Info **info){
         }
         Info information;
         if(parsing(line, &information) == -1){
-            fprintf(stderr, "Error: line entry is malformed %d\n", line_num);
+            perror("Error: line entry is malformed\n");
             continue;
         }
         (*info)[count++] = information;
