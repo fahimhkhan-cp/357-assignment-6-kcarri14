@@ -113,6 +113,7 @@ void percent(Info *information, int *count, char *field){
 
 int execute_operation(char *line, Info *information, int count){
     char *function_wanted = strtok(line, ":\n");
+    printf("%s\n", function_wanted);
     if(strcmp(function_wanted,"population-total")){
         population_total(information, count);
     }else if(strcmp(function_wanted, "filter-state")){
