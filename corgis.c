@@ -94,9 +94,10 @@ void filter_field(Info *information, int *count, char *field, char *comparison, 
     }
 
     *count = new_count;
-    printf("Filter: %s, %s, %.2f (%d entries\n", field, comparison, value, count);
+    printf("Filter: %s, %s, %.2f (%d entries)\n", field, comparison, value, *count);
 
 }
+
 void population_total(Info *information, int count){
     int population_total_number = 0;
     for(int i = 0; i < count; i++){
