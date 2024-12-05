@@ -30,8 +30,8 @@ int load_data(char *filename, Info **info){
     return count;
 }
 
-void display_counties(Info *information, int *count){
-    for(int i = 0; i < *count; i++){
+void display_counties(Info *information, int count){
+    for(int i = 0; i < count; i++){
         printf("County name: %s\nCounty State: %s\nPopluation: %llu\n", information[i].county, information[i].state, information[i].Population_2014_Population);
     }
 }
