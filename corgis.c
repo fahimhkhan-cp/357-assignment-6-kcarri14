@@ -123,18 +123,18 @@ int execute_operation(char *line, Info *information, int *count){
         population_total(information, *count);
     }else if(strcmp(function_wanted, "filter-state") == 0){
         char *state_wanted = strtok(NULL, "\n");
-        filter_state(information, &count, state_wanted);
+        filter_state(information, count, state_wanted);
     }else if(strcmp(function_wanted, "filter") == 0){
         char *field_wanted = strtok(NULL, ":");
         char *ge_or_le = strtok(NULL, ":");
         float number = atof(strtok(NULL,"\n"));
-        filter_field(information, &count, field_wanted, ge_or_le, number);
+        filter_field(information, count, field_wanted, ge_or_le, number);
     }else if(strcmp(function_wanted, "percent") == 0){
         char *field_wanted = strtok(NULL, "\n");
-        percent(information, &count, field_wanted);
+        percent(information, count, field_wanted);
     }else if(strcmp(function_wanted, "population") == 0){
         char *field_wanted = strtok(NULL, "\n");
-        population_field(information, &count, field_wanted);
+        population_field(information, count, field_wanted);
     }else if(strcmp(function_wanted, "display") == 0){
         printf("%d\n", *count);
         display_counties(information, count);
@@ -180,7 +180,7 @@ int main(int argc, char* argv[]){
     }
     printf("Loaded %d entries.\n", count);
 
-    if(process_operations(argv[2], information, count)){
+    if(process_operations(argv[2], information, &count)){
         perror("Error: failed to process operations\n");
         free(information);
         return 1;
