@@ -110,7 +110,46 @@ void population_field(Info *information, int *count, char *field){
 
 }
 void percent(Info *information, int *count, char *field){
-
+    int total_pop = 0;
+    int sub_pop = 0;
+    for(int i = 0; i < count; i++){
+        total_pop += information[i].Population_2014_Population;
+        float percentage;
+        if (strcmp(field, "Education.High School or Higher") == 0) {
+            percentage = information[i].Education_High_School_or_Higher;
+        } else if (strcmp(field, "Education.Bachelor's Degree or Higher") == 0) {
+            percentage = information[i].Education_Bachelors_Degree_or_Higher;
+        } else if (strcmp(field, "Income.Persons Below Poverty Level") == 0) {
+            percentage = information[i].Income_Persons_Below_Poverty_Level;
+        } else if (strcmp(field, "Ethnicities.American Indian and Alaska Native Alone") == 0) {
+            percentage = information[i].Ethnicities_American_Indian_and_Alaska_Native_Alone;
+        } else if (strcmp(field, "Ethnicities.Asian Alone") == 0) {
+            percentage = information[i].Ethnicities_Asian_Alone;
+        } else if (strcmp(field, "Ethnicities.Black Alone") == 0) {
+            percentage = information[i].Ethnicities_Black_Alone;
+        } else if (strcmp(field, "Ethnicities.Hispanic or Latino") == 0) {
+            percentage = information[i].Ethnicities_Hispanic_or_Latino;
+        } else if (strcmp(field, "Ethnicities.Native Hawaiian and Other Pacific Islander Alone") == 0) {
+            percentage = information[i].Ethnicities_Native_Hawaiian_and_Other_Pacific_Islander_Alone;
+        } else if (strcmp(field, "Ethnicities.Two or More Races") == 0) {
+            percentage = information[i].Ethnicities_Two_or_More_Races;
+        } else if (strcmp(field, "Ethnicities.White Alone") == 0) {
+            percentage = information[i].Ethnicities_White_Alone;
+        } else if (strcmp(field, "Ethnicities.White Alone not Hispanic or Latino") == 0) {
+            percentage = information[i].Ethnicities_White_Alone_not_Hispanic_or_Latino;  
+        }else {
+            fprintf(stderr, "Error: Unsupported field '%s'\n", field);
+            return;
+        }
+        sub_pop += (int)(information[i].Population_2014_Population *(percentage/100.0));
+    }
+    float result;
+    if(total_pop > 0){
+        result = (100.0 * sub_pop) / total_pop;
+    }else{
+        result = 0.0;
+    }
+    printf("2014 %s percentage: %.2f\n", field, result);
 }
 
 int execute_operation(char *line, Info *information, int *count){
