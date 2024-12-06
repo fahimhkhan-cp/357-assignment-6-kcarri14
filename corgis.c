@@ -36,9 +36,9 @@ void display_counties(Info *information, int *count){
         printf("\tPopulation: %llu\n", information[i].Population_2014_Population);
         printf("\tEducation \n");
         printf("\t\t>= High School: %.6f\n", information[i].Education_High_School_or_Higher);
-        printf("\t\t>= High School: %.6f\n", information[i].Education_High_School_or_Higher);
+        printf("\t\t>= Bachelor's Degree: %.6f\n", information[i].Education_Bachelors_Degree_or_Higher);
         printf("\tEthnicity Percentages \n");
-        printf("\t\tAmerican Indian and Alsaka Native: %.6f\n", information[i].Ethnicities_American_Indian_and_Alaska_Native_Alone);
+        printf("\t\tAmerican Indian and Alsaka Native: %.6f%%\n", information[i].Ethnicities_American_Indian_and_Alaska_Native_Alone);
         printf("\t\tAsian Alone: %.6f\n", information[i].Ethnicities_Asian_Alone);
         printf("\t\tBlack Alone: %.6f\n", information[i].Ethnicities_Black_Alone);
         printf("\t\tHispanic or Latino: %.6f\n", information[i].Ethnicities_Black_Alone);
