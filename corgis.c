@@ -113,14 +113,14 @@ void percent(Info *information, int *count, char *field){
 
 }
 
-int execute_operation(char *line, Info *information, int count){
+int execute_operation(char *line, Info *information, int *count){
     char *function_wanted = strtok(line, ":\n");
     if (!function_wanted) {
     fprintf(stderr, "Malformed line: no function specified\n");
     return -1;
     }
     if(strcmp(function_wanted,"population-total")== 0){
-        population_total(information, count);
+        population_total(information, *count);
     }else if(strcmp(function_wanted, "filter-state") == 0){
         char *state_wanted = strtok(NULL, "\n");
         filter_state(information, &count, state_wanted);
@@ -136,8 +136,8 @@ int execute_operation(char *line, Info *information, int count){
         char *field_wanted = strtok(NULL, "\n");
         population_field(information, &count, field_wanted);
     }else if(strcmp(function_wanted, "display") == 0){
-        printf("%d\n", count);
-        display_counties(information, &count);
+        printf("%d\n", *count);
+        display_counties(information, count);
     }else{
         fprintf(stderr, "malformed line");
         return -1;
@@ -146,7 +146,7 @@ int execute_operation(char *line, Info *information, int count){
 }
 
 
-int process_operations(char *filename, Info *information, int count){
+int process_operations(char *filename, Info *information, int *count){
     FILE *file = fopen(filename, "r");
     if(!file){
         perror("Error opening file");
