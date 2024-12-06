@@ -136,7 +136,7 @@ int execute_operation(char *line, Info *information, int count){
         char *field_wanted = strtok(NULL, "\n");
         population_field(information, &count, field_wanted);
     }else if(strcmp(function_wanted, "display") == 0){
-        printf("%d\n", &count);
+        printf("%d\n", count);
         display_counties(information, &count);
     }else{
         fprintf(stderr, "malformed line");
