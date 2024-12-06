@@ -35,21 +35,21 @@ void display_counties(Info *information, int *count){
         printf("%s, %s\n", information[i].county, information[i].state);
         printf("\tPopulation: %llu\n", information[i].Population_2014_Population);
         printf("\tEducation \n");
-        printf("\t\t>= High School: %.6f\n", information[i].Education_High_School_or_Higher);
-        printf("\t\t>= Bachelor's Degree: %.6f\n", information[i].Education_Bachelors_Degree_or_Higher);
+        printf("\t\t>= High School: %.6f%%\n", information[i].Education_High_School_or_Higher);
+        printf("\t\t>= Bachelor's Degree: %.6f%%\n", information[i].Education_Bachelors_Degree_or_Higher);
         printf("\tEthnicity Percentages \n");
         printf("\t\tAmerican Indian and Alsaka Native: %.6f%%\n", information[i].Ethnicities_American_Indian_and_Alaska_Native_Alone);
-        printf("\t\tAsian Alone: %.6f\n", information[i].Ethnicities_Asian_Alone);
-        printf("\t\tBlack Alone: %.6f\n", information[i].Ethnicities_Black_Alone);
-        printf("\t\tHispanic or Latino: %.6f\n", information[i].Ethnicities_Black_Alone);
-        printf("\t\tNative Hawaiian and Other Pacific Islander Alone: %.6f\n", information[i].Ethnicities_Native_Hawaiian_and_Other_Pacific_Islander_Alone);
-        printf("\t\tTwo or More Races: %.6f\n", information[i].Ethnicities_Two_or_More_Races);
-        printf("\t\tWhite Alone: %.6f\n", information[i].Ethnicities_White_Alone);
-        printf("\t\tWhite Alone, not Hispanic or Latino: %.6f\n", information[i].Ethnicities_White_Alone_not_Hispanic_or_Latino);
+        printf("\t\tAsian Alone: %.6f%%\n", information[i].Ethnicities_Asian_Alone);
+        printf("\t\tBlack Alone: %.6f%%\n", information[i].Ethnicities_Black_Alone);
+        printf("\t\tHispanic or Latino: %.6f%%\n", information[i].Ethnicities_Black_Alone);
+        printf("\t\tNative Hawaiian and Other Pacific Islander Alone: %.6f%%\n", information[i].Ethnicities_Native_Hawaiian_and_Other_Pacific_Islander_Alone);
+        printf("\t\tTwo or More Races: %.6f%%\n", information[i].Ethnicities_Two_or_More_Races);
+        printf("\t\tWhite Alone: %.6f%%\n", information[i].Ethnicities_White_Alone);
+        printf("\t\tWhite Alone, not Hispanic or Latino: %.6f%%\n", information[i].Ethnicities_White_Alone_not_Hispanic_or_Latino);
         printf("\tIncome \n");
-        printf("\t\tMedian Household: %d\n", information[i].Income_Median_Household_Income);
-        printf("\t\tPer Capita: %d\n", information[i].Income_Per_Capita_Income);
-        printf("\t\tBelow Pverty Level: %.6f\n", information[i].Income_Persons_Below_Poverty_Level);
+        printf("\t\tMedian Household: %d%%\n", information[i].Income_Median_Household_Income);
+        printf("\t\tPer Capita: %d%%\n", information[i].Income_Per_Capita_Income);
+        printf("\t\tBelow Pverty Level: %.6f%%\n", information[i].Income_Persons_Below_Poverty_Level);
     }
 }
 
@@ -197,7 +197,7 @@ void percent(Info *information, int *count, char *field){
     }else{
         result = 0.0;
     }
-    printf("2014 %s percentage: %.2f\n", field, result);
+    printf("2014 %s percentage: %.2f%%\n", field, result);
 }
 
 int execute_operation(char *line, Info *information, int *count){
