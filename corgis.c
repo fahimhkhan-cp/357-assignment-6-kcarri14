@@ -112,7 +112,7 @@ void population_field(Info *information, int *count, char *field){
 void percent(Info *information, int *count, char *field){
     int total_pop = 0;
     int sub_pop = 0;
-    for(int i = 0; i < count; i++){
+    for(int i = 0; i < *count; i++){
         total_pop += information[i].Population_2014_Population;
         float percentage;
         if (strcmp(field, "Education.High School or Higher") == 0) {
