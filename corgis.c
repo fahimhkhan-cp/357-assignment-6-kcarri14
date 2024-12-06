@@ -33,7 +33,7 @@ int load_data(char *filename, Info **info){
 void display_counties(Info *information, int *count){
     for(int i = 0; i < *count; i++){
         printf("%s, %s\n", information[i].county, information[i].state);
-        printf("\tPopulation: %d\n", information[i].Population_2014_Population);
+        printf("\tPopulation: %.6f\n", information[i].Population_2014_Population);
         printf("\tEducation \n");
         printf("\t\t>= High School: %.6f\n", information[i].Education_High_School_or_Higher);
         printf("\t\t>= High School: %.6f\n", information[i].Education_High_School_or_Higher);
