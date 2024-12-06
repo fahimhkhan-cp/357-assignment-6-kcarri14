@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "corgis.h"
-
+// loads data from csv file
 int load_data(char *filename, Info **info){
     FILE *file = fopen(filename, "r");
     if(!file){
@@ -29,7 +29,7 @@ int load_data(char *filename, Info **info){
     fclose(file);
     return count;
 }
-
+// when display is in .ops this function will be called
 void display_counties(Info *information, int *count){
     for(int i = 0; i < *count; i++){
         printf("%s, %s\n", information[i].county, information[i].state);
@@ -52,7 +52,7 @@ void display_counties(Info *information, int *count){
         printf("\t\tBelow Pverty Level: %.6f%%\n", information[i].Income_Persons_Below_Poverty_Level);
     }
 }
-
+// filters out the number of entries of state
 void filter_state(Info *information, int *count, char *state){
     int new_count = 0;
     for(int i = 0; i < *count; i++){
@@ -63,6 +63,7 @@ void filter_state(Info *information, int *count, char *state){
     *count = new_count;
     printf("Filter: state == %s (%d entries)\n", state, new_count);
 }
+//filters out on a specific field
 void filter_field(Info *information, int *count, char *field, char *comparison, float value){
     int new_count = 0;
     for(int i = 0; i < *count; i++){
@@ -114,7 +115,7 @@ void filter_field(Info *information, int *count, char *field, char *comparison, 
     printf("Filter: %s, %s, %.2f (%d entries)\n", field, comparison, value, *count);
 
 }
-
+// gives the total population number
 void population_total(Info *information, int count){
     int population_total_number = 0;
     for(int i = 0; i < count; i++){
@@ -122,6 +123,7 @@ void population_total(Info *information, int count){
     }
     printf("2014 population: %d\n", population_total_number);
 }
+// gives population percentage by the field
 void population_field(Info *information, int *count, char *field){
     int sub_pop = 0;
     for(int i = 0; i < *count; i++){
@@ -156,6 +158,7 @@ void population_field(Info *information, int *count, char *field){
     }
     printf("2014 %s population: %d\n", field, sub_pop);
 }
+//gives the percentage by field
 void percent(Info *information, int *count, char *field){
     int total_pop = 0;
     int sub_pop = 0;
@@ -198,7 +201,7 @@ void percent(Info *information, int *count, char *field){
     }
     printf("2014 %s percentage: %.2f%%\n", field, result);
 }
-
+// executes what is in the .ops
 int execute_operation(char *line, Info *information, int *count){
     char *function_wanted = strtok(line, ":\n");
     if (!function_wanted) {
@@ -230,7 +233,7 @@ int execute_operation(char *line, Info *information, int *count){
     return 0;
 }
 
-
+// load file of  .ops
 int process_operations(char *filename, Info *information, int *count){
     FILE *file = fopen(filename, "r");
     if(!file){
