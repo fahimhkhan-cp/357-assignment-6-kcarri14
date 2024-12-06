@@ -149,7 +149,7 @@ void percent(Info *information, int *count, char *field){
     }else{
         result = 0.0;
     }
-    printf("2014 %s percentage: %.2f\n", field, result);
+    printf("2014 %s percentage: %.6f\n", field, result);
 }
 
 int execute_operation(char *line, Info *information, int *count){
