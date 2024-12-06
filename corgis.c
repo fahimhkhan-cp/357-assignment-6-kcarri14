@@ -12,7 +12,7 @@ int load_data(char *filename, Info **info){
     char line[1024];
     int line_num = 0;
     int count = 0;
-    *info = malloc(100 * sizeof(Info));
+    *info = malloc(3143 * sizeof(Info));
     while(fgets(line, sizeof(line), file)){
         line_num++;
         if(line_num == 1){
