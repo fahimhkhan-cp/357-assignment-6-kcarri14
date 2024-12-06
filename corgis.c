@@ -30,8 +30,8 @@ int load_data(char *filename, Info **info){
     return count;
 }
 
-void display_counties(Info *information, int count){
-    for(int i = 0; i < count; i++){
+void display_counties(Info *information, int *count){
+    for(int i = 0; i < *count; i++){
         printf("County name: %s\nCounty State: %s\nPopluation: %llu\n", information[i].county, information[i].state, information[i].Population_2014_Population);
     }
 }
@@ -136,8 +136,8 @@ int execute_operation(char *line, Info *information, int count){
         char *field_wanted = strtok(NULL, "\n");
         population_field(information, &count, field_wanted);
     }else if(strcmp(function_wanted, "display") == 0){
-        printf("%d\n", count);
-        display_counties(information, count);
+        printf("%d\n", &count);
+        display_counties(information, &count);
     }else{
         fprintf(stderr, "malformed line");
         return -1;
